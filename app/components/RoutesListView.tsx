@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { routesData } from "@/app/data/routes";
 import { Timer, TrendingUp, MapPin, Clock, ChevronRight } from "lucide-react";
 import { getDifficultyColor } from "@/app/utils/getDifficultyColor";
@@ -60,9 +61,11 @@ export default function RoutesListView() {
             >
               <div className="md:flex">
                 <div className="md:w-1/3 h-64 md:h-auto">
-                  <img
+                  <Image
                     src={route.image}
                     alt={route.name}
+                    width={400}   // O ajusta acorde al diseño de tus cards
+                    height={256}  // 64*4 = 256px
                     className="w-full h-full object-cover"
                   />
                 </div>

@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { restaurantsData } from '../data/restaurants';
 import { StarRating } from './StarRating';
 import { Search, Filter, Heart, MapPin } from 'lucide-react';
@@ -10,7 +11,7 @@ import { getPriceSymbol } from '../utils/getPriceSymbol';
 
 const RestaurantsListView = () => {
   const router = useRouter();
-  const [restaurants, setRestaurants] = useState(restaurantsData);
+  const [restaurants] = useState(restaurantsData);
   const [searchQuery, setSearchQuery] = useState('');
   const [filters, setFilters] = useState({
     cuisine: '',
@@ -140,9 +141,11 @@ const RestaurantsListView = () => {
                 onClick={() => router.push(`/restaurants/${restaurant.id}`)}
               >
                 <div className="relative h-64">
-                  <img
+                  <Image
                     src={restaurant.image}
                     alt={restaurant.name}
+                    width={600}
+                    height={256}
                     className="w-full h-full object-cover"
                   />
                   <button

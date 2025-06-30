@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import {
   Search,
   Sparkles,
@@ -127,9 +128,11 @@ const HomePage = () => {
                 onClick={() => router.push(`/restaurants/${restaurant.id}`)}
               >
                 <div className="relative h-48">
-                  <img
+                  <Image
                     src={restaurant.image}
                     alt={restaurant.name}
+                    width={400}
+                    height={192}
                     className="w-full h-full object-cover"
                   />
                   <button
@@ -197,9 +200,11 @@ const HomePage = () => {
                 onClick={() => router.push(`/events/${event.id}`)}
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <Image
                     src={event.image}
                     alt={event.title}
+                    width={400}
+                    height={192}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="absolute top-4 left-4">
@@ -263,9 +268,11 @@ const HomePage = () => {
               >
                 <div className="flex flex-col md:flex-row">
                   <div className="md:w-1/3 h-48 md:h-auto">
-                    <img
+                    <Image
                       src={route.image}
                       alt={route.name}
+                      width={400}
+                      height={192}
                       className="w-full h-full object-cover"
                     />
                   </div>

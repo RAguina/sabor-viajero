@@ -1,8 +1,8 @@
 'use client';
 
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { useState, useEffect } from "react";
-import { eventsData } from "../data/events";
 import { CalendarDays, Clock, MapPin, Users, ChevronRight, Heart } from "lucide-react";
 import { Event } from "../types";
 
@@ -19,7 +19,7 @@ export default function EventDetailView({ event }: Props) {
     if (!event) return;
     const saved = JSON.parse(localStorage.getItem("event-favorites") || "[]");
     setIsFavorite(saved.includes(event.id));
-  }, [event?.id]);
+  }, [event]);
 
   const toggleFavorite = () => {
     if (!event) return;
@@ -55,11 +55,14 @@ export default function EventDetailView({ event }: Props) {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="relative h-96">
-        <img
-          src={event.image}
-          alt={event.title}
-          className="w-full h-full object-cover"
-        />
+        <Image
+        src={event.image}
+        alt={event.title}
+        width={1200}
+        height={384}
+        className="w-full h-full object-cover"
+        priority
+      />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
         <button
           onClick={() => router.push("/events")}

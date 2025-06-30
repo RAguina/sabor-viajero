@@ -1,6 +1,7 @@
 // app/components/RouteCard.tsx
 import React from "react";
-import { Timer, TrendingUp, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Timer, TrendingUp } from "lucide-react";
 import { getDifficultyColor } from "../utils/getDifficultyColor";
 
 interface Route {
@@ -32,9 +33,11 @@ export const RouteCard: React.FC<RouteCardProps> = ({ route, onClick }) => (
   >
     <div className="flex flex-col md:flex-row">
       <div className="md:w-1/3 h-48 md:h-auto">
-        <img
+        <Image
           src={route.image}
           alt={route.name}
+          width={400}
+          height={192}
           className="w-full h-full object-cover"
         />
       </div>

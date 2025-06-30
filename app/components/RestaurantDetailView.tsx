@@ -5,6 +5,7 @@ import { StarRating } from './StarRating';
 import { Heart, MapPin, Phone, Clock, ChefHat, ChevronRight } from 'lucide-react';
 import { getPriceSymbol } from '../utils/getPriceSymbol';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const RestaurantDetailView = ({ restaurant }: { restaurant: Restaurant }) => {
   const [activeTab, setActiveTab] = useState('info');
@@ -28,10 +29,13 @@ const RestaurantDetailView = ({ restaurant }: { restaurant: Restaurant }) => {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="relative h-96">
-        <img
+        <Image
           src={restaurant.image}
           alt={restaurant.name}
+          width={1200}
+          height={384}
           className="w-full h-full object-cover"
+          priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
         <button

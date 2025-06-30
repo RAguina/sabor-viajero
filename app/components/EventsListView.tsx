@@ -1,11 +1,12 @@
 'use client';
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { eventsData } from "../data/events";
 import { CalendarDays, Clock, MapPin, Users, Heart, Search } from "lucide-react";
 
 const EventsListView = () => {
-  const [events, setEvents] = useState(eventsData);
+  const [events] = useState(eventsData);
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
@@ -86,9 +87,11 @@ const EventsListView = () => {
                 className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer group relative block"
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <Image
                     src={event.image}
                     alt={event.title}
+                    width={600}
+                    height={192}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="absolute top-4 left-4">

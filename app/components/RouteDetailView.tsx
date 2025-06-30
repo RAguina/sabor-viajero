@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { routesData } from "@/app/data/routes";
-import { Timer, TrendingUp, MapPin, ChevronRight } from "lucide-react";
+import { Timer, TrendingUp, MapPin } from "lucide-react";
 import { getDifficultyColor } from "@/app/utils/getDifficultyColor";
 
 export default function RouteDetailView({ id }: { id: string }) {
@@ -20,10 +21,13 @@ export default function RouteDetailView({ id }: { id: string }) {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="relative h-96">
-        <img
+        <Image
           src={route.image}
           alt={route.name}
+          width={1200}
+          height={384}
           className="w-full h-full object-cover"
+          priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
         {/* Si querés botón de volver, usar useRouter (igual que los otros views) */}
