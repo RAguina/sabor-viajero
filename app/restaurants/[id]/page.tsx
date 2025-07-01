@@ -4,8 +4,9 @@ import RestaurantDetailView from '../../components/RestaurantDetailView';
 import type { Metadata } from 'next';
 
 // Dinámico: SEO específico para cada restaurante
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const restaurant = restaurantsData.find(r => r.id === params.id);
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const restaurant = restaurantsData.find(r => r.id === resolvedParams.id);
   if (!restaurant) return {};
 
   return {
@@ -34,8 +35,9 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 }
 
 // Página restaurante
-export default function RestaurantDetail({ params }: { params: { id: string } }) {
-  const restaurant = restaurantsData.find(r => r.id === params.id);
+export default async function RestaurantDetail({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  const restaurant = restaurantsData.find(r => r.id === resolvedParams.id);
   if (!restaurant) return notFound();
   return <RestaurantDetailView restaurant={restaurant} />;
 }

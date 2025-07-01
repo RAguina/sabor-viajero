@@ -4,8 +4,9 @@ import EventDetailView from '../../components/EventDetailView';
 import type { Metadata } from 'next';
 
 // SEO dinámico por evento
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const event = eventsData.find(e => e.id === params.id);
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const event = eventsData.find(e => e.id === resolvedParams.id);
   if (!event) return {};
 
   return {
@@ -33,8 +34,9 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   };
 }
 
-export default function EventDetail({ params }: { params: { id: string } }) {
-  const event = eventsData.find(e => e.id === params.id);
+export default async function EventDetail({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  const event = eventsData.find(e => e.id === resolvedParams.id);
   if (!event) return notFound();
   return <EventDetailView event={event} />;
 }
