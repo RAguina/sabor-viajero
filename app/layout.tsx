@@ -22,22 +22,29 @@ export const metadata: Metadata = {
     default: "Sabor Viajero",
     template: "%s | Sabor Viajero",
   },
-  description: "Descubre rutas, eventos y restaurantes únicos en tu ciudad y más allá.",
+  description:
+    "Descubre rutas, eventos y restaurantes únicos en tu ciudad y más allá.",
   keywords: [
-    "gastronomía", "rutas gastronómicas", "restaurantes", "eventos culinarios", "foodies", "Sabor Viajero"
+    "gastronomía",
+    "rutas gastronómicas",
+    "restaurantes",
+    "eventos culinarios",
+    "foodies",
+    "Sabor Viajero",
   ],
-  authors: [{ name: "Sabor Viajero", url: "https://saborviajero.com" }],
+  authors: [{ name: "Sabor Viajero", url: "https://sabor-viajero.vercel.app" }],
   creator: "Sabor Viajero",
   openGraph: {
     type: "website",
     locale: "es_ES",
-    url: "https://saborviajero.com",
+    url: "https://sabor-viajero.vercel.app",
     siteName: "Sabor Viajero",
     title: "Sabor Viajero",
-    description: "Explora rutas, eventos y restaurantes únicos. Vive la experiencia foodie.",
+    description:
+      "Explora rutas, eventos y restaurantes únicos. Vive la experiencia foodie.",
     images: [
       {
-        url: "/og-image.jpg", // asegúrate de tener la imagen en /public
+        url: "https://sabor-viajero.vercel.app/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Sabor Viajero - Gastronomía sin fronteras",
@@ -47,20 +54,21 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Sabor Viajero",
-    description: "Explora rutas, eventos y restaurantes únicos. Vive la experiencia foodie.",
-    site: "@saborviajero", // cambia por tu handle real si tienes uno
-    images: ["/og-image.jpg"],
+    description:
+      "Explora rutas, eventos y restaurantes únicos. Vive la experiencia foodie.",
+    site: "@saborviajero", // opcional
+    images: ["https://sabor-viajero.vercel.app/og-image.jpg"],
   },
-  metadataBase: new URL("https://saborviajero.com"),
+  metadataBase: new URL("https://sabor-viajero.vercel.app"),
   alternates: {
-    canonical: "https://saborviajero.com",
+    canonical: "https://sabor-viajero.vercel.app",
   },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png", // si tienes uno
+    apple: "/apple-touch-icon.png",
   },
-  manifest: "/site.webmanifest", // si tienes uno (opcional)
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
@@ -71,9 +79,10 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
-        {/* Preload og-image para SEO */}
-        <link rel="preload" as="image" href="/og-image.jpg" />
-        {/* Opcional: metatag viewport (Next lo agrega pero puedes forzar aquí) */}
+        {/* ⚠️ Meta OG explícito para WhatsApp (opcional pero útil) */}
+        <meta property="og:image" content="https://sabor-viajero.vercel.app/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body
