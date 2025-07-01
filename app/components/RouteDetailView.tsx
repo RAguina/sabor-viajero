@@ -2,12 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { routesData } from "@/app/data/routes";
 import { Timer, TrendingUp, MapPin } from "lucide-react";
 import { getDifficultyColor } from "@/app/utils/getDifficultyColor";
+import { Route } from "../types"; // Ajusta el import al path de tu tipo Route si es necesario
 
-export default function RouteDetailView({ id }: { id: string }) {
-  const route = routesData.find((r) => r.id === id);
+export default function RouteDetailView({ route }: { route: Route }) {
   const [activeStop, setActiveStop] = useState(0);
 
   if (!route) {
@@ -30,7 +29,6 @@ export default function RouteDetailView({ id }: { id: string }) {
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-        {/* Si querés botón de volver, usar useRouter (igual que los otros views) */}
         <div className="absolute bottom-0 left-0 right-0 p-8">
           <div className="max-w-7xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">

@@ -36,5 +36,5 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 export default function RouteDetail({ params }: { params: { id: string } }) {
   const route = routesData.find(r => r.id === params.id);
   if (!route) return notFound();
-  return <RouteDetailView id={route.id} />;
+  return <RouteDetailView route={route} />;
 }
